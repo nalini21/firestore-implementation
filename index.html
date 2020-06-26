@@ -1,5 +1,7 @@
 <html>
     <head>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
@@ -13,7 +15,30 @@
             <ul id="cafe-list"></ul>
 
         </div>
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+              apiKey: "AIzaSyDTHMUIeKnZvuulgulz3paP2eH-atB8To0",
+              authDomain: "firestore-try-4b681.firebaseapp.com",
+              databaseURL: "https://firestore-try-4b681.firebaseio.com",
+              projectId: "firestore-try-4b681",
+              storageBucket: "firestore-try-4b681.appspot.com",
+              messagingSenderId: "914890515425",
+              appId: "1:914890515425:web:9dd23ed2e678d690b4a8a0"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            const db= firebase.firestore();
+            //db.settings({timestampsInSnapshots: true});
 
+          </script>
         <script src="app.js"></script>
     </body>
 </html>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
