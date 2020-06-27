@@ -26,12 +26,12 @@ function renderCafe(doc) {
 
 }
 
-db.collection('cafes').get().then((snapshot) => {
-  snapshot.docs.forEach((doc) => {
-    renderCafe(doc);
-  })
-}
-);
+// db.collection('cafes').get().then((snapshot) => {
+//   snapshot.docs.forEach((doc) => {
+//     renderCafe(doc);
+//   })
+// }
+// );
 
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
@@ -41,4 +41,17 @@ form.addEventListener('submit', (evt) => {
   });
   form.name.value = '';
   form.city.value = '';
+})
+
+db.collection('cafes').onSnapshot(snapshot => {
+  let changes = snapshot.docChanges();
+  changes.forEach(change=> {
+    if(change.type == 'added'){
+      renderCafe(change.doc);
+    }
+    else if(change.type== 'removed'){
+      let li = cafelist.querySelector('[data-id='+change.doc.id+']')
+      cafelist.removeChild(li);
+    }
+  })
 })
